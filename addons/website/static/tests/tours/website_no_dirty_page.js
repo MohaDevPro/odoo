@@ -28,6 +28,16 @@ tour.register('website_no_dirty_page', {
         content: "Click on default paragraph",
         trigger: '.s_text_image p.o_default_snippet_text',
     }, {
+        content: "Click on button",
+        trigger: '.s_text_image .btn',
+        run: function (actions) {
+            actions.click();
+            const sel = document.getSelection();
+            const el = this.$anchor[0];
+            sel.collapse(el, 0);
+            el.focus();
+        },
+    }, {
         // Makes sure the dirty flag does not happen after a setTimeout or
         // something like that.
         content: "Click elsewhere and wait for a few ms",
